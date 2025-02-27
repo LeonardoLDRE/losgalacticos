@@ -1,0 +1,1 @@
+print (sorted(map(int, input ("ingresar 5 numeros por espacio:").split())))

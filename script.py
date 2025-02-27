@@ -1,5 +1,5 @@
 import pandas as pd
-import matplotlib.pyplot as plt
+import matplotlib as plt
 
 # Cree un dataframe con datos no reales
 data = {

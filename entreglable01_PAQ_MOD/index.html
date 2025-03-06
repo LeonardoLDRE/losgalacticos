@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda de Productos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="fondo">
+      <img
+        src="/home/leonardo/Imágenes/Camera/concepto-sistema-gestion-inventario-almacen-inteligente-gerente-que-utiliza-tableta-digital-que-muestra-tablero-control-software-gestion-almacenamiento-almacen-borroso-como-fondo_114016-20887.avif"
+      />
+    </div>
+    <h2>Agregar Producto</h2>
+    <form id="productForm" enctype="multipart/form-data">
+      <input
+        type="text"
+        name="nombre"
+        placeholder="Nombre del producto"
+        required
+      />
+      <input
+        type="number"
+        name="id_categoria"
+        placeholder="ID de la categoría"
+        required
+      />
+      <input type="number" name="precio" placeholder="Precio" required />
+      <input
+        type="number"
+        name="id_marca"
+        placeholder="ID de la marca"
+        required
+      />
+      <textarea name="descripcion" placeholder="Descripción"></textarea>
+      <input type="number" name="cantidad" placeholder="Cantidad" required />
+      <input type="file" name="imagen" accept="image/*" />
+      <button type="submit">Agregar</button>
+    </form>
+    <p id="mensaje"></p>
+
+    <a href="productos.html" style="text-decoration: none"
+      ><button>Mostrar Productos</button></a
+    >
+
+    <script>
+      document
+        .getElementById("productForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const formData = new FormData(this);
+
+          fetch("http://localhost:5000/add_product", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              document.getElementById("mensaje").textContent =
+                data.message || data.error;
+            })
+            .catch((error) => console.error("Error:", error));
+        });
+    </script>
+  </body>
+</html>

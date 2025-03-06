@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Productos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h2>Lista de Productos</h2>
+    <a href="index.html" style="text-decoration: none"
+      ><button>Regresar</button></a
+    >
+
+    <div class="product-container" id="productsContainer"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("http://localhost:5000/get_products")
+          .then((response) => response.json())
+          .then((data) => {
+            const container = document.getElementById("productsContainer");
+            container.innerHTML = "";
+
+            if (data.error) {
+              container.innerHTML = `<p>${data.error}</p>`;
+              return;
+            }
+
+            data.forEach((product) => {
+              const card = document.createElement("div");
+              card.className = "product-card";
+              card.innerHTML = `
+              <img src="${product.imagen_url}" alt="${product.nombre}">
+              <h3>${product.nombre}</h3>
+              <p>${product.descripcion || "Sin descripción"}</p>
+              <p><strong>Precio:</strong> s/${product.precio}</p>
+              <p><strong>Stock:</strong> ${product.cantidad}</p>
+            `;
+              container.appendChild(card);
+            });
+          })
+          .catch((error) => console.error("Error:", error));
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+body {
+  font-family: "verdana", impact;
+  max-width: 900px;
+  margin: auto;
+  padding: auto;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    #2c3e50,
+    #4ca1af
+  ); /* Gradiente de fondo */
+  color: rgba(255, 255, 255, 0.805);
+  position: relative; /* Mantiene la estructura */
+  z-index: 1; /* Asegura que el contenido quede sobre el fondo */
+  font-size: 1.1vw;
+}
+
+.fondo {
+  position: fixed; /* Fija la imagen en toda la pantalla */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/home/leonardo/Imágenes/Camera/concepto-sistema-gestion-inventario-almacen-inteligente-gerente-que-utiliza-tableta-digital-que-muestra-tablero-control-software-gestion-almacenamiento-almacen-borroso-como-fondo_114016-20887.avif"); /* Reemplaza con la URL de tu imagen */
+  background-size: cover; /* Ajusta la imagen sin deformarla */
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1; /* Coloca la imagen detrás del contenido */
+}
+
+/* Formularios */
+form {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 50px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+input,
+button,
+textarea {
+  display: block;
+  width: 100%;
+  margin: 15px 0;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+textarea {
+  resize: none;
+}
+
+/* Botón */
+button {
+  background-color: #f39c12;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #e67e22;
+  transform: scale(1.05);
+}
+
+/* Contenedor de productos */
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 columnas por fila */
+  gap: 15px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.product-item {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Tarjeta de producto */
+.product-card {
+  width: 220px;
+  border-radius: 10px;
+  padding: 35px;
+  text-align: center;
+  background-color: rgb(182, 192, 191);
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-card h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  color: #000000;
+}
+
+.product-card p {
+  font-size: 14px;
+  color: #000000;
+}
+
+
+@media (max-width: 1200px) {
+  .product-container {
+      grid-template-columns: repeat(4, 1fr); /* 4 por fila en pantallas medianas */
+  }
+}
+
+@media (max-width: 768px) {
+  .product-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 por fila en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 700px) {
+  .product-container {
+      grid-template-columns: repeat(1, 1fr); /* 1 por fila en móviles */
+  }
+}
+
